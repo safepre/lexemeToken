@@ -1,5 +1,5 @@
 import re
-
+#https://docs.python.org/3/library/re.html#module-re (if you want to read documentation about regex in python)
 keywords = ["abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class",
             "const", "continue", "default", "double", "do", "else", "enum", "extends", "false", "final", "finally",
             "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long",
@@ -12,8 +12,8 @@ logical_Operators = ["&&", "||", "!"]
 punctuations = [",", ".", ";", "\"", "'", "(", ")", "{", "}", "[", "]", "="]
 
 filename = input('Please enter a Java file name: ')
-counter_1, counter_2, counter_3, counter_4, counter_5 = 0, 0, 0, 0, 0
-avoid_duplicates = set()
+counterKey, counterArithmetic, counterComparison, counterLogical, counterPunctuations = 0, 0, 0, 0, 0
+no_Duplicates = set()
 file_extension = filename.split(".").pop()
 
 if file_extension == 'java':
@@ -22,24 +22,29 @@ if file_extension == 'java':
         lexemes = re.findall(r"\w+|[^\w\s]+|(?:!=|<=|>=|\|\||&&|==)", file_data)
         for lexeme in lexemes:
             if lexeme in keywords:
-                if lexeme not in avoid_duplicates:
-                    avoid_duplicates.add(lexeme)
+                counterKey += 1
+                if lexeme not in no_Duplicates:
+                    no_Duplicates.add(lexeme)
                     print("Keyword: " + lexeme)
             if lexeme in arithmetic_Operators:
-                if lexeme not in avoid_duplicates:
-                    avoid_duplicates.add(lexeme)
+                counterArithmetic += 1
+                if lexeme not in no_Duplicates:
+                    no_Duplicates.add(lexeme)
                     print("Arithmetic Operator: " + lexeme)
             if lexeme in comparison_Operators:
-                if lexeme not in avoid_duplicates:
-                    avoid_duplicates.add(lexeme)
+                counterComparison += 1
+                if lexeme not in no_Duplicates:
+                    no_Duplicates.add(lexeme)
                     print("Comparison Operator: " + lexeme)
             if lexeme in logical_Operators:
-                if lexeme not in avoid_duplicates:
-                    avoid_duplicates.add(lexeme)
+                counterLogical += 1
+                if lexeme not in no_Duplicates:
+                    no_Duplicates.add(lexeme)
                     print("Logical Operator: " + lexeme)
             if lexeme in punctuations:
-                if lexeme not in avoid_duplicates:
-                    avoid_duplicates.add(lexeme)
+                counterPunctuations += 1
+                if lexeme not in no_Duplicates:
+                    no_Duplicates.add(lexeme)
                     print("Punctuation: " + lexeme)
 else:
     print("Wrong file type.")
