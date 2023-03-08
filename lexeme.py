@@ -1,5 +1,3 @@
-import re
-#https://docs.python.org/3/library/re.html#module-re (if you want to read documentation about regex in python)
 keywords = ["abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class",
             "const", "continue", "default", "double", "do", "else", "enum", "extends", "false", "final", "finally",
             "float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long",
