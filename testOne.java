@@ -12,6 +12,7 @@ enum Difficulty {
 	MEDIUM,
 	HARD;
     &&
+    ||
 }
 
 public class Player{

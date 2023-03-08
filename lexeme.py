@@ -22,7 +22,7 @@ fileType = filename.split(".").pop()
 if fileType == 'java':
     with open(filename, "r") as file:
         file_data = file.read()
-        lexemes = re.findall(r"\w+|[^\w\s]+|!=|<=|>=|\|\||&&|==", file_data)
+        lexemes = re.findall(r"\w+|[^\w\s]+|!=|<=|>=|\|\||&&|==", file_data) 
         for lexeme in lexemes:
             if lexeme in keywords:
                 counterKey += 1
