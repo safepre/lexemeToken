@@ -1,4 +1,5 @@
 import re
+
 keywords = ["abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class",
 		"const", "continue", "default", "double", "do", "else", "enum", "extends", "false", "final", "finally",
 		"float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long",
@@ -21,7 +22,8 @@ fileType = filename.split(".").pop()
 if fileType == 'java':
     with open(filename, "r") as file:
         file_data = file.read()
-        lexemes = re.findall(r'\w+|[^\w\s]+|!=|<=|>=|\|\||&&|==', file_data) 
+        numbers = re.findall(r'\d+(?:\.\d+)?', file_data) #https://stackoverflow.com/questions/26314092/what-does-in-a-regular-expression-mean#:~:text=It%20means%20that%20it%20is%20not%20capturing%20group.
+        lexemes = re.findall(r'[a-zA-z]+|[^\w\s]+|!=|<=|>=|\|\||&&|==', file_data) 
         for lexeme in lexemes:
             if lexeme in keywords:
                 if lexeme not in keywordSet:
@@ -43,19 +45,22 @@ if fileType == 'java':
                 if lexeme not in punctuationSet:
                     counterPunctuations += 1
                     punctuationSet.add(lexeme)
-            elif re.match(r'\d+',lexeme):
-                if punctuations[1] in lexeme:
-                    if lexeme not in doubleLiteralsSet:
-                        counterDouble += 1
-                        doubleLiteralsSet.add(lexeme)
-                else:
-                    if lexeme not in integerLiteralsSet:
-                        counterInteger += 1
-                        integerLiteralsSet.add(lexeme)
             else:
-                if lexeme not in otherSet:
+                if lexeme not in otherSet and re.match(r'\w+',lexeme):
                     counterOther += 1
                     otherSet.add(lexeme)
+                    print(otherSet)
+        for num in numbers:
+            if num.isdigit():
+                if lexeme not in integerLiteralsSet:
+                    int_num = int(num)
+                    counterInteger += 1
+                    integerLiteralsSet.add(int_num)
+            else:
+                if lexeme not in doubleLiteralsSet:
+                    double_num = float(num)
+                    counterDouble += 1
+                    doubleLiteralsSet.add(double_num)
         
         if counterKey == 0:
             print('Keywords: { } ')
