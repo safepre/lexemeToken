@@ -49,7 +49,6 @@ if fileType == 'java':
                 if lexeme not in otherSet and re.match(r'\w+',lexeme):
                     counterOther += 1
                     otherSet.add(lexeme)
-                    print(otherSet)
         for num in numbers:
             if num.isdigit():
                 if lexeme not in integerLiteralsSet:
@@ -63,35 +62,35 @@ if fileType == 'java':
                     doubleLiteralsSet.add(double_num)
         
         if counterKey == 0:
-            print('Keywords: { } ')
+            print('Keywords: 0 : { } ')
         else:
             print('Keywords: ', counterKey,' : ',keywordSet)
         if counterArithmetic == 0:
-            print('Arithmetic Operators: { } ')
+            print('Arithmetic Operators: 0 : { } ')
         else:
             print('Arithmetic Operators: ', counterArithmetic,' : ',arithmeticOpSet)
         if counterComparison == 0:
-            print('Comparison Operators: { } ')
+            print('Comparison Operators: 0 : { } ')
         else:
             print('Comparison Operators: ', counterComparison, ' : ', comparisonOpSet)
         if counterLogical == 0:
-            print('Logical Operators: { } ')
+            print('Logical Operators: 0 : { } ')
         else:
             print('Logical Operators: ', counterLogical, ' : ', logicalOpSet)
         if counterPunctuations == 0:
-            print('Punctuations: { } ')
+            print('Punctuations: 0 : { } ')
         else:
             print('Punctuations: ', counterPunctuations, ' : ', punctuationSet)
         if counterDouble == 0:
-            print('Double Literals: { }')
+            print('Double Literals: 0 : { }')
         else:
              print('Double Literals: ', counterDouble, ' : ', doubleLiteralsSet)
         if counterInteger == 0:
-            print('Integer Literals: { }')
+            print('Integer Literals: 0 : { }')
         else:
             print('Integer Literals: ', counterInteger, ' : ', integerLiteralsSet)
         if counterOther == 0:
-            print('Other Lexemes: { }')
+            print('Other Lexemes: 0 : { }')
         else:
             print('Other Lexemes: ', counterOther, ' : ', otherSet)
 else:
